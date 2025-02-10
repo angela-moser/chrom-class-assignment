@@ -138,9 +138,6 @@ def run_cadet_sim(ms):
    model.root.input.model.solver.max_restarts = 10
    model.root.input.model.solver.schur_safety = 1e-8
 
-   # Number of cores for parallel simulation
-   model.root.input.solver.nthreads = 2
-
    # Tolerances for the time integrator
    model.root.input.solver.time_integrator.abstol = 1e-6            # usually 1e-6
    model.root.input.solver.time_integrator.algtol = 1e-10           # usually 1e-10
