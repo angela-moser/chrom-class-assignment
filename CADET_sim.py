@@ -174,13 +174,8 @@ def run_cadet_sim(ms):
    model.filename = 'model.h5'
    model.save()
 
-   data = model.run()
-
-   if data.return_code == 0:
-       model.load()
-   else:
-       print(data)
-       raise Exception('Simulation failed')
+   data = model.run_simulation()
 
    sim_solution = model.root.output.solution
    return sim_solution
+
