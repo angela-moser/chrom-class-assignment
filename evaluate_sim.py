@@ -125,7 +125,7 @@ def evaluate_simulation(s, ms):
     for idx, comp_feed_c in enumerate(ms['feed_conc']):
         load_mass = comp_feed_c*ms['load_vol']*1e6
         load_masses.append(load_mass)
-        total_mass = np.trapz(s['prot_c_mg'][idx], s['volume'])    
+        total_mass = np.trapezoid(s['prot_c_mg'][idx], s['volume'])    
         mass_bal_comp = 100*total_mass/load_mass
         mass_bal.append(mass_bal_comp)
 
@@ -156,7 +156,7 @@ def evaluate_simulation(s, ms):
             pool_volume = main_vol[pool_end_idx] - main_vol[pool_start_idx]
             pool_conc = []
             for idx in range(len(ms['feed_conc'])):
-                pool_mass = np.trapz(elution_conc[idx][pool_start_idx:pool_end_idx], elution_vol[idx][pool_start_idx:pool_end_idx])
+                pool_mass = np.trapezoid(elution_conc[idx][pool_start_idx:pool_end_idx], elution_vol[idx][pool_start_idx:pool_end_idx])
                 # Calculate elution pool concentration
                 pool_conc_comp = pool_mass/pool_volume
                 pool_conc.append(pool_conc_comp)
